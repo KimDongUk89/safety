@@ -5,9 +5,9 @@ import calendar
 from datetime import date, datetime
 from workalendar.asia import SouthKorea
 
-cal = SouthKorea()
-holiday = []
-holiday_date=[]
+cal = SouthKorea() #calendar
+holiday = [] #공휴일 리스트
+holiday_date=[] #공휴일의 날짜(일) 리스트
 
 #2020년에 있는 모든 공휴일 가져오기
 for i in range(len(cal.holidays(2020))):
@@ -71,10 +71,11 @@ try:
 				search = driver.find_element_by_xpath('//*[@id="frmOn"]/div[1]/div/div[2]/table/tbody/tr[11]/th[2]/input') #소방안전 양호 버튼
 				search.click()
 
-				#사전유해인자위험분석 보고서 게시 부분은 해당없음
+				#사전유해인자위험분석 보고서 게시 부분
 				for i in range(2,6):
 					search = driver.find_element_by_xpath('//*[@id="frmOn"]/div[1]/div/div[2]/table/tbody/tr[{}]/td[1]'.format(i))
 					if search.text == "사전유해인자위험분석 보고서 게시":
+						#해당없음
 						no_check = driver.find_element_by_xpath('//*[@id="frmOn"]/div[1]/div/div[2]/table/tbody/tr[{}]/td[4]/input'.format(i))
 						no_check.click()
 
